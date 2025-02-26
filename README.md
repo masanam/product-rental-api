@@ -66,3 +66,10 @@ This is a Laravel-based API for a Product Rental Service. The API allow users to
     ```
 
 2. Access the application in your web browser at `http://localhost:8000`.
+
+3. Testing APi:
+
+    ```bash
+    php artisan test
+    ```
+
