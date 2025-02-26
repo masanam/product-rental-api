@@ -19,7 +19,8 @@ return new class extends Migration
             $table->date('rental_start');
             $table->date('rental_end');
             $table->decimal('total_price', 10, 2);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             });
     }
 

@@ -57,8 +57,11 @@ class ProductController extends BaseController
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:155',
+            'description' => 'required|string|max:155',
+            'stock' => 'required',
             'sku' => ['required','unique:'.Product::class],
             'category' => 'required'
         ]);
@@ -75,7 +78,8 @@ class ProductController extends BaseController
             'name' => $request->get('name'),
             'sku' => $request->get('sku'),
             'category' => $request->get('category'),
-            'slug' => Str::slug($request->get('name'))
+            'stock' => $request->get('stock'),
+            'description' => $request->get('description'),
         ]);
 
         return response()->json([
