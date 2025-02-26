@@ -59,7 +59,7 @@ class ProductController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:155',
-            'sku' => 'required',
+            'sku' => ['required','unique:'.Product::class],
             'category' => 'required'
         ]);
 
