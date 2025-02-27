@@ -8,6 +8,14 @@ This is a Laravel-based API for a Product Rental Service. The API allow users to
 - Composer
 - MySQL or any other supported database
 
+## Document
+
+- Database Schema => db_diagram.pdf
+- SQL Query => product_api.sql
+    (Import SQL Query to your database)
+- Postman Collection => rest_api_laravel.postman_collection.json
+    (Import postman collection file to get the example API).
+
 ## Installation
 
 1. Clone the repository:

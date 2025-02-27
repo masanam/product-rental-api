@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
+use App\Http\Controllers\API\BaseController as BaseController;
 
-class ProductController extends Controller
+class ProductAttributeController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -12,11 +15,6 @@ class ProductController extends Controller
     public function index()
     {
         //
-        // return Product::with('productPrice')->get();
-        
-        return Product::with(['attributes', 'regionalPrices.region', 'regionalPrices.rentalPeriod'])->get();
-
-
     }
 
     /**
@@ -25,20 +23,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
-            'sku' => 'required|string|unique:products',
-            'description' => 'nullable|string',
+            'product_id' => 'required|exists:products,id',
+            'attribute_id' => 'required|exists:attributes,id',
+            'attribute_value_id' => 'required|exists:attribute_values,id',
         ]);
 
-        return Product::create($request->all());
+        return ProductAttribute::create($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        return Product::with(['attributes.attribute', 'attributes.value'])->findOrFail($id);
+        //
     }
 
     /**

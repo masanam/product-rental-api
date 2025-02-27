@@ -12,7 +12,7 @@ class RentalPeriodFactory extends Factory
     public function definition()
     {
         return [
-            'duration_months' => $this->faker->randomElement([3, 6, 12]),
+            'period' => $this->faker->randomElement([3, 6, 12]),
         ];
     }
 }

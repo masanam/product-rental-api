@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('user_id');
-            $table->foreignId('product_id');
-            $table->foreignId('region_id');
+            $table->foreignId('user_id')->index();
+            $table->foreignId('product_id')->index();
+            $table->foreignId('region_id')->index();
             $table->date('rental_start');
             $table->date('rental_end');
             $table->decimal('total_price', 10, 2);

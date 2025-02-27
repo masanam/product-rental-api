@@ -13,12 +13,30 @@ return new class extends Migration
     {
         Schema::create('product_pricings', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('product_id');
-            $table->foreignId('region_id');
-            $table->foreignId('rental_period_id');
+            $table->integer('product_id')->unsigned();
+            $table->integer('region_id')->unsigned();
+            $table->integer('rental_period_id')->unsigned();
             $table->decimal('price', 10, 2);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+            $table->foreign('product_id')
+            ->references('id')
+            ->on('products')
+            ->onDelete('cascade');
+
+            $table->foreign('region_id')
+            ->references('id')
+            ->on('regions')
+            ->onDelete('cascade');
+
+            $table->foreign('rental_period_id')
+            ->references('id')
+            ->on('rental_periods')
+            ->onDelete('cascade');
+
+
+
         });
     }
 

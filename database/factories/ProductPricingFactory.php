@@ -2,12 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Pricing;
+use App\Models\ProductPricing;
+use App\Models\Product;
+use App\Models\Region;
+use App\Models\RentalPeriod;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PricingFactory extends Factory
+class ProductPricingFactory extends Factory
 {
-    protected $model = Pricing::class;
+    protected $model = ProductPricing::class;
 
     public function definition()
     {

@@ -12,11 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('attribute_values', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('attribute_id');
+            $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
             $table->string('value'); // e.g., Red, Large
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+            $table->foreign('attribute_id')
+            ->references('id')
+            ->on('attributes')
+            ->onDelete('cascade');
+
         });
     
     }
